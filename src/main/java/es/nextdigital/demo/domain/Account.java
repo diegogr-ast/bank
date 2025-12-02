@@ -34,7 +34,7 @@ public class Account extends AbstractAggregateRoot {
 		this.balance = balance;
 	}
 
-	public record Id(@NonNull String value) {
+	public record Id(@NonNull UUID value) {
 	}
 
 	public record Iban(String value) {
@@ -43,7 +43,8 @@ public class Account extends AbstractAggregateRoot {
 		}
 	}
 
-	public record Movement(@NonNull UUID id, @NonNull Type type, @NonNull LocalDateTime date, @NonNull String details) {
+	public record Movement(@NonNull UUID id, @NonNull Type type, @NonNull LocalDateTime date,
+			@NonNull BigDecimal quantity) {
 		public enum Type {
 			IN, OUT, FEE
 		}
